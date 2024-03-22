@@ -1,36 +1,32 @@
-# Plagiarism Detection Tool
+# Blurring Faces in Images
 
-This web application detects similarity between two text inputs and highlights the matching words. It utilizes the SequenceMatcher from the difflib library to calculate the similarity score and identify matching blocks of text.
+This Python script utilizes the OpenCV library to detect faces in an image and blur them. The Haar Cascade classifier is used for face detection, and Gaussian blur is applied to the detected faces. Additionally, the script displays the original and modified images using matplotlib and saves the modified image to a specified output path.
+
+## Functionality
+
+### `blur_faces_show_and_save(image_path, output_path)`
+- **Inputs**:
+  - `image_path`: Path to the input image file.
+  - `output_path`: Path to save the modified image with blurred faces.
+- **Output**: None (displays and saves the modified image).
+- **Process**:
+  1. Load the input image.
+  2. Detect faces in the image using the Haar Cascade classifier.
+  3. For each detected face:
+     - Extract the face region.
+     - Apply Gaussian blur to the face region.
+     - Replace the original face region with the blurred one.
+  4. Display the original and modified images using matplotlib.
+  5. Save the modified image to the specified output path.
 
 ## Usage
-1. Enter the first text in the provided textarea labeled "Enter Text 1 Here...".
-2. Enter the second text in the textarea labeled "Enter Text 2 Here...".
-3. Click on the "Check Similarity" button to see the similarity score and highlighted matching words.
 
-## Features
-- **Similarity Score**: Displays the percentage of similarity between the two texts.
-- **Highlighted Text**: Shows both texts with matching words highlighted in yellow.
+To use this script:
+1. Save the provided code in a Python file (e.g., `blur_faces.py`).
+2. Make sure you have OpenCV and matplotlib installed (`pip install opencv-python matplotlib`).
+3. Prepare an input image containing faces.
+4. Call the `blur_faces_show_and_save` function with the input image path and the desired output path for the modified image.
 
-## Instructions
-- Make sure to enter the texts you want to compare in the provided textareas.
-- After submitting, the application will display the similarity score and highlight the matching words in both texts.
-
-## Interface
-- **Header**: Displays the title "Plagiarism Detection Tool".
-- **Textareas**: Two textareas for entering the texts to be compared.
-- **Check Similarity Button**: Initiates the comparison process.
-- **Similarity Score**: Shows the percentage of similarity between the texts.
-- **Highlighted Text**: Displays the texts with matching words highlighted.
-
-## Technologies Used
-- **Flask**: Python web framework used for the backend.
-- **HTML/CSS**: For structuring and styling the web interface.
-- **difflib.SequenceMatcher**: Utilized to find the similarity between texts and highlight matching words.
-
-## Run the Application
-To run the application locally:
-1. Save the provided Python code in a file (e.g., `app.py`).
-2. Install Flask (`pip install Flask`).
-3. Run the Python file (`python app.py`).
-4. Open a web browser and go to `http://localhost:5000/` to access the application.
-
+Example usage:
+```python
+blur_faces_show_and_save('input_image.jpg', 'output_image.jpg')
